@@ -17,7 +17,7 @@ public class GetAllCityController {
 
         GetAllCityResponse response = getAllCityService.execute();
 
-        modelMap.addAttribute("city", response.getCity());
+        modelMap.addAttribute("CITY", response.getCity());
 
         return "AllCity";
     }
