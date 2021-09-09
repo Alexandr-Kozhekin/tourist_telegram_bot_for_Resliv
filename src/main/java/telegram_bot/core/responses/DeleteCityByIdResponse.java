@@ -1,10 +1,10 @@
 package telegram_bot.core.responses;
 
-public class DeleteCityResponse {
+public class DeleteCityByIdResponse {
 
     private boolean delete;
 
-    public DeleteCityResponse(boolean delete) {
+    public DeleteCityByIdResponse(boolean delete) {
         this.delete = delete;
     }
 
