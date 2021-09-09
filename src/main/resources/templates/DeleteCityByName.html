@@ -44,40 +44,32 @@
     background-color: #fff;
     border-radius: 5px;
 
-    margin-left: 25%;
-    margin-top: 5%;
+    margin-left: 35%;
     padding: 0.1em;
     box-sizing: padding-box;
     border:0.1em solid #fff;
 
-    width: 50%;
+    width: 20px;
     }
 
     header {
     padding: 10px;
-    width: 25%;
+    width: 30%;
     border: 1px;
     font-size: 20px;
     margin-left: 35%;
     }
 
-    table tr th {
-    font-size: x-large;
-    padding: 0.5em;
-    border: solid #fff;
-    margin: 0.5em;
-    box-sizing: border-box;
-    vertical-align: bottom;
-    }
-
     table tr td {
     font-size: x-large;
-    padding: 0.5em;
-    border: solid #fff;
-    margin: 0.5em;
-    box-sizing: border-box;
-    table-layout: fixed;
-    vertical-align: bottom;
+    }
+
+    table tr td input {
+    font-size: xx-large;
+    }
+
+    table tr td select {
+    font-size: xx-large;
     }
 
     .button input {
@@ -85,6 +77,8 @@
 
     padding: 0.5em;
     border: 0.5em solid #fff;
+    margin-top: 1em;
+
     box-sizing: border-box;
 
     font-size: x-large;
@@ -97,25 +91,25 @@
 </head>
 
 <body>
+
 <header>
-    <h1>All city</h1>
+    <h1>Delete city by Name</h1>
 </header>
 
 <table>
+    <form action="/DeleteCityByName" th:object="${request}" method="post">
 
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-    </tr>
+        <tr><td>Name</br><input type="text" placeholder="enter city Name" required autofocus
+                              id="id"
+                              name="id"
+                              th:field="${request.city_name}"/></td></tr>
 
-    <tr th:if="${CITY != null}" th:each="city : ${CITY}">
-        <td th:text="${city.city_id}"/>
-        <td th:text="${city.city_name}"/>
-    </tr>
+        <td class="button">
+            <input type="submit" value="Delete city"/>
+            <input type="button" onclick="history.back();" value="Back"/>
+        </td>
 
-    <td class="button">
-        <input type="button" onclick="history.back();" value="Back"/>
-    </td>
+    </form>
 
 </table>
 
