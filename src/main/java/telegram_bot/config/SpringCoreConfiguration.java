@@ -3,8 +3,6 @@ package telegram_bot.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +18,9 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
-@EnableAutoConfiguration
 @ComponentScan(basePackages = "telegram_bot")
 @PropertySource(value = "classpath:application.properties")
 @EnableTransactionManagement
-@EntityScan(basePackages = "telegram_bot.core.domain")
 public class SpringCoreConfiguration {
 
     @Value("${jdbc.url}")
