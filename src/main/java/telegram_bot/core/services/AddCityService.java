@@ -3,7 +3,7 @@ package telegram_bot.core.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import telegram_bot.core.databases.CityDatabaseImpl;
+import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.domain.City;
 import telegram_bot.core.requests.AddCityRequest;
 import telegram_bot.core.responses.AddCityResponse;
@@ -12,13 +12,13 @@ import telegram_bot.core.responses.AddCityResponse;
 @Transactional
 public class AddCityService {
 
-    @Autowired private CityDatabaseImpl cityDatabase;
+    @Autowired private CityRepository cityRepository;
 
     public AddCityResponse execute(AddCityRequest request) {
 
         City city = new City(request.getName());
 
-        cityDatabase.addCity(city);
+        cityRepository.addCity(city);
 
         return new AddCityResponse(city);
     }
