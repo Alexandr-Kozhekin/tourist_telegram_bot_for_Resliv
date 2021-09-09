@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 @Transactional
-public class CityDatabaseImpl implements CityDatabase {
+public class CityRepositoryImpl implements CityRepository {
 
     @Autowired private SessionFactory sessionFactory;
 
@@ -22,11 +22,23 @@ public class CityDatabaseImpl implements CityDatabase {
     }
 
     @Override
-    public boolean deleteCity(Long id) {
+    public boolean deleteCityById(Long id) {
 
         Query query = sessionFactory.getCurrentSession().createQuery(
                 "delete City where id = :id");
         query.setParameter("id", id);
+
+        int result = query.executeUpdate();
+
+        return result == 1;
+    }
+
+    @Override
+    public boolean deleteCityByName(String name) {
+
+        Query query = sessionFactory.getCurrentSession().createQuery(
+                "delete City where city_name = :city_name");
+        query.setParameter("city_name", name);
 
         int result = query.executeUpdate();
 
