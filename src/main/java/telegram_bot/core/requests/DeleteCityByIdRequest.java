@@ -1,13 +1,13 @@
 package telegram_bot.core.requests;
 
-public class DeleteCityRequest {
+public class DeleteCityByIdRequest {
 
     private Long id;
 
-    public DeleteCityRequest() {
+    public DeleteCityByIdRequest() {
     }
 
-    public DeleteCityRequest(Long id) {
+    public DeleteCityByIdRequest(Long id) {
         this.id = id;
     }
 
