@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import telegram_bot.core.domain.City;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
@@ -51,6 +52,28 @@ public class CityRepositoryImpl implements CityRepository {
         return sessionFactory.getCurrentSession()
                 .createQuery("SELECT c FROM City c", City.class)
                 .getResultList();
+    }
+
+    @Override
+    public Optional<City> fiendCityByName(String city_name) {
+
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT c FROM City c WHERE city_name = :city_name", City.class);
+
+        query.setParameter("city_name", city_name);
+
+        return query.getResultList().stream().findFirst();
+    }
+
+    @Override
+    public Optional<City> fiendCityById(Long city_id) {
+
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT c FROM City c WHERE city_id = :city_id", City.class);
+
+        query.setParameter("city_id", city_id);
+
+        return query.getResultList().stream().findFirst();
     }
 
 }
