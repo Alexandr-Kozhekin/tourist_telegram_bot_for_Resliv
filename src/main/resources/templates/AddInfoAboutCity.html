@@ -54,7 +54,7 @@
 
     header {
     padding: 10px;
-    width: 30%;
+    width: 20%;
     border: 1px;
     font-size: 20px;
     margin-left: 35%;
@@ -76,9 +76,9 @@
     display:inline-block;
 
     padding: 0.5em;
-    border: 0.5em solid #fff;
+    border: 0.3em solid #fff;
     margin-top: 1em;
-
+    margin-left: 0.7em;
     box-sizing: border-box;
 
     font-size: x-large;
@@ -88,27 +88,30 @@
     }
     </style>
 
-</head>
-
 <body>
 
 <header>
-    <h1>Delete city by name</h1>
+    <h1>Add info about City</h1>
 </header>
 
 <table>
-    <form action="/DeleteCityByName" th:object="${request}" method="post">
 
-        <tr><td>City name</br><input type="text" placeholder="enter city name" required autofocus
-                              id="id"
-                              name="id"
-                              th:field="${request.cityName}"/></td></tr>
+    <form action="/AddInfoAboutCity" th:object="${request}" method="post">
+
+        <tr><td>City name</br><input type="text" placeholder="enter city name" autofocus
+                                     id="name"
+                                     name="name"
+                                     th:field="${request.cityName}"/></td></tr>
+
+        <tr><td>City info</br><input type="text" placeholder="enter info about city" autofocus
+                                     id="info"
+                                     name="info"
+                                     th:field="${request.cityInfo}"/></td></tr>
 
         <td class="button">
-            <input type="submit" value="Delete city"/>
+            <input type="submit" value="Add info"/>
             <input type="button" onclick="history.back();" value="Back"/>
         </td>
-
     </form>
 
 </table>

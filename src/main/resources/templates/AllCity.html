@@ -104,13 +104,13 @@
 <table>
 
     <tr>
-        <td>Id</td>
-        <td>Name</td>
+        <td>City Id</td>
+        <td>City name</td>
     </tr>
 
     <tr th:if="${CITY != null}" th:each="city : ${CITY}">
-        <td th:text="${city.city_id}"/>
-        <td th:text="${city.city_name}"/>
+        <td th:text="${city.cityId}"/>
+        <td th:text="${city.cityName}"/>
     </tr>
 
     <td class="button">
