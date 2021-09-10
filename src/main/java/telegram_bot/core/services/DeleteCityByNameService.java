@@ -11,11 +11,11 @@ import telegram_bot.core.responses.DeleteCityByNameResponse;
 @Transactional
 public class DeleteCityByNameService {
 
-    @Autowired CityRepository cityRepository;
+    @Autowired private CityRepository cityRepository;
 
     public DeleteCityByNameResponse execute(DeleteCityByNameRequest request){
 
-        boolean deleted = cityRepository.deleteCityByName(request.getCity_name());
+        boolean deleted = cityRepository.deleteCityByName(request.getCityName());
 
         return new DeleteCityByNameResponse(deleted);
     }

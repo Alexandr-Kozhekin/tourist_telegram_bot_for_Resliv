@@ -12,7 +12,7 @@ import telegram_bot.core.responses.DeleteCityByIdResponse;
 @Transactional
 public class DeleteCityByIdService {
 
-    @Autowired CityRepository cityRepository;
+    @Autowired private CityRepository cityRepository;
 
     public DeleteCityByIdResponse execute(DeleteCityByIdRequest request){
 

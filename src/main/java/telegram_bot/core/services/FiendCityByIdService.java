@@ -5,21 +5,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.domain.City;
-import telegram_bot.core.responses.GetAllCityResponse;
+import telegram_bot.core.requests.FiendCityByIdRequest;
+import telegram_bot.core.responses.FiendCityByIdResponse;
 
-import java.util.List;
+import java.util.Optional;
 
 @Component
 @Transactional
-public class GetAllCityService {
+public class FiendCityByIdService {
 
     @Autowired private CityRepository cityRepository;
 
-    public GetAllCityResponse execute() {
+    public FiendCityByIdResponse execute(FiendCityByIdRequest request){
 
-        List<City> city = cityRepository.getAllCity();
+        Optional<City> city = cityRepository.fiendCityById(request.getCityId());
 
-        return new GetAllCityResponse(city);
+        return new FiendCityByIdResponse(city.get());
     }
-
 }
