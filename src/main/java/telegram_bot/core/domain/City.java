@@ -11,32 +11,32 @@ public class City implements Serializable {
     @Id
     @Column(name = "city_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long city_id;
+    private Long cityId;
 
     @Column(name = "city_name", nullable = false)
-    private String city_name;
+    private String cityName;
 
     public City() {
     }
 
-    public City(String name) {
-        this.city_name = name;
+    public City(String cityName) {
+        this.cityName = cityName;
     }
 
-    public Long getCity_id() {
-        return city_id;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setCity_id(Long city_id) {
-        this.city_id = city_id;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     @Override
@@ -44,19 +44,19 @@ public class City implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         City city = (City) o;
-        return Objects.equals(city_id, city.city_id) && Objects.equals(city_name, city.city_name);
+        return Objects.equals(cityId, city.cityId) && Objects.equals(cityName, city.cityName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city_id, city_name);
+        return Objects.hash(cityId, cityName);
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "id=" + city_id +
-                ", name='" + city_name + '\'' +
+                "cityId=" + cityId +
+                ", cityName='" + cityName + '\'' +
                 '}';
     }
 }

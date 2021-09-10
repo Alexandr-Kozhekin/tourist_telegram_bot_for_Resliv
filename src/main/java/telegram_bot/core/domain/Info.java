@@ -11,24 +11,33 @@ public class Info implements Serializable {
     @Id
     @Column(name = "info_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long info_id;
+    private Long infoId;
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     @Column(name = "city_info", nullable = false)
-    private String city_info;
+    private String cityInfo;
 
     public Info() {
     }
 
-    public Long getInfo_id() {
-        return info_id;
+    public Info(City city, String cityInfo) {
+        this.city = city;
+        this.cityInfo = cityInfo;
     }
 
-    public void setInfo_id(Long info_id) {
-        this.info_id = info_id;
+    public Info(String cityInfo) {
+        this.cityInfo = cityInfo;
+    }
+
+    public Long getInfoId() {
+        return infoId;
+    }
+
+    public void setInfoId(Long infoId) {
+        this.infoId = infoId;
     }
 
     public City getCity() {
@@ -39,12 +48,12 @@ public class Info implements Serializable {
         this.city = city;
     }
 
-    public String getCity_info() {
-        return city_info;
+    public String getCityInfo() {
+        return cityInfo;
     }
 
-    public void setCity_info(String city_info) {
-        this.city_info = city_info;
+    public void setCityInfo(String cityInfo) {
+        this.cityInfo = cityInfo;
     }
 
     @Override
@@ -52,21 +61,20 @@ public class Info implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Info info = (Info) o;
-        return Objects.equals(info_id, info.info_id) && Objects.equals(city, info.city)
-                && Objects.equals(city_info, info.city_info);
+        return Objects.equals(infoId, info.infoId) && Objects.equals(city, info.city) && Objects.equals(cityInfo, info.cityInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(info_id, city, city_info);
+        return Objects.hash(infoId, city, cityInfo);
     }
 
     @Override
     public String toString() {
         return "Info{" +
-                "info_id=" + info_id +
+                "infoId=" + infoId +
                 ", city=" + city +
-                ", city_info='" + city_info + '\'' +
+                ", cityInfo='" + cityInfo + '\'' +
                 '}';
     }
 }
