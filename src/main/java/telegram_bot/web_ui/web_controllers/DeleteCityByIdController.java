@@ -12,7 +12,7 @@ import telegram_bot.core.services.DeleteCityByIdService;
 @Controller
 public class DeleteCityByIdController {
 
-    @Autowired DeleteCityByIdService cityService;
+    @Autowired private DeleteCityByIdService cityService;
 
     @GetMapping(value = "/DeleteCityById")
     public String showDeleteCityByIDPage(ModelMap modelMap){

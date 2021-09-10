@@ -12,8 +12,7 @@ import telegram_bot.core.services.AddCityService;
 @Controller
 public class AddCityController {
 
-    @Autowired
-    AddCityService addCityService;
+    @Autowired private AddCityService addCityService;
 
     @GetMapping(value = "/AddCity")
     public String showAddEmployeePage(ModelMap modelMap) {

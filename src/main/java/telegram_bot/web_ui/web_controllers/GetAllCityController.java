@@ -10,7 +10,7 @@ import telegram_bot.core.services.GetAllCityService;
 @Controller
 public class GetAllCityController {
 
-    @Autowired GetAllCityService getAllCityService;
+    @Autowired private GetAllCityService getAllCityService;
 
     @GetMapping(value = "/AllCity")
     public String showGetAllTitlesPage(ModelMap modelMap) {
