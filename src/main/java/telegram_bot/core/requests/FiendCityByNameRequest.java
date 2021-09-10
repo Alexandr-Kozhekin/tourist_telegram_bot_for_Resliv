@@ -1,13 +1,13 @@
 package telegram_bot.core.requests;
 
-public class DeleteCityByNameRequest {
+public class FiendCityByNameRequest {
 
     private String cityName;
 
-    public DeleteCityByNameRequest() {
+    public FiendCityByNameRequest() {
     }
 
-    public DeleteCityByNameRequest(String cityName) {
+    public FiendCityByNameRequest(String cityName) {
         this.cityName = cityName;
     }
 
