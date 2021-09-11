@@ -6,28 +6,29 @@ import org.springframework.transaction.annotation.Transactional;
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.databases.InfoRepository;
 import telegram_bot.core.domain.City;
-import telegram_bot.core.domain.Info;
-import telegram_bot.core.requests.AddInfoAboutCityRequest;
-import telegram_bot.core.responses.AddInfoAboutCityResponse;
+import telegram_bot.core.requests.DeleteInfoAboutCityRequest;
+import telegram_bot.core.responses.DeleteInfoAboutCityResponse;
 
 import java.util.Optional;
 
 @Component
 @Transactional
-public class AddInfoAboutCityService {
-
-    @Autowired CityRepository cityRepository;
+public class DeleteInfoAboutCityService {
 
     @Autowired InfoRepository infoRepository;
 
-    public AddInfoAboutCityResponse execute(AddInfoAboutCityRequest request) {
+    @Autowired CityRepository cityRepository;
+
+    public DeleteInfoAboutCityResponse execute(DeleteInfoAboutCityRequest request) {
+
+        boolean deleted = false;
 
         Optional<City> city = cityRepository.fiendCityByName(request.getCityName());
 
-        city.ifPresent(value -> infoRepository.addInfoAboutCity(value, request.getCityInfo()));
+        if(city.isPresent()) {
+            deleted = infoRepository.deleteInfoAboutCity(request.getInfoId(), city.get().getCityId());
+        }
 
-        Info info = new Info(request.getCityInfo());
-
-        return new AddInfoAboutCityResponse(info);
+        return new DeleteInfoAboutCityResponse(deleted);
     }
 }
