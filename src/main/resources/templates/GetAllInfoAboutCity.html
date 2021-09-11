@@ -106,22 +106,22 @@
 <body>
 
 <header>
-    <h1>Fiend city by name</h1>
+    <h1>Get all info about city</h1>
 </header>
 
 <table class="mainTable">
 
-    <form action="/FiendCityByName" th:object="${request}" method="post">
+    <form action="/GetAllInfoAboutCity" th:object="${request}" method="post">
 
-        <tr><td>City name</br><input placeholder="enter city name" autofocus
+        <tr><td>City Id</br><input placeholder="enter city Id" autofocus
                                    required
-                                   id="name"
-                                   name="name"
-                                   th:field="${request.cityName}"/>
+                                   id="id"
+                                   name="id"
+                                   th:field="${request.cityId}"/>
         </td></tr>
 
         <td class="button">
-            <input type="submit" value="Fiend city by Name"/>
+            <input type="submit" value="Get all info"/>
         </td>
 
     </form>
@@ -131,13 +131,13 @@
 <table class="searchTable">
 
     <tr>
-        <td>City Id</td>
         <td>City name</td>
+        <td>Info</td>
     </tr>
 
-    <tr th:if="${CITY != null}" th:each="city : ${CITY}">
-        <td th:text="${city.cityId}"/>
-        <td th:text="${city.cityName}"/>
+    <tr th:if="${INFO != null}" th:each="info : ${INFO}">
+        <td th:text="${info.city.getCityName()}"/>
+        <td th:text="${info.cityInfo}"/>
     </tr>
 
     <td class="button">

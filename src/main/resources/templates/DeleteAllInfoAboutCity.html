@@ -6,7 +6,6 @@
     <meta name="description" content="For_Resliv">
     <meta name="author" content="Alexandr_Kozhekin">
     <title>Resliv</title>
-
     <style>
     @font-face {
     font-family: 'PT_Serif';
@@ -41,15 +40,7 @@
     background-color: #f5f5f5;
     }
 
-    header {
-    padding: 10px;
-    width: 25%;
-    border: 1px;
-    font-size: 20px;
-    margin-left: 35%;
-    }
-
-    .mainTable {
+    table {
     background-color: #fff;
     border-radius: 5px;
 
@@ -61,28 +52,23 @@
     width: 20px;
     }
 
-    .searchTable {
-    background-color: #fff;
-    border-radius: 5px;
-
-    margin-left: 25%;
-    margin-top: 5%;
-    padding: 0.1em;
-    box-sizing: padding-box;
-    border:0.1em solid #fff;
-
-    width: 50%;
+    header {
+    padding: 10px;
+    width: 30%;
+    border: 1px;
+    font-size: 20px;
+    margin-left: 35%;
     }
 
     table tr td {
     font-size: x-large;
     }
 
-    .searchTable td tr td {
-    font-size: large;
+    table tr td input {
+    font-size: xx-large;
     }
 
-    table tr td input {
+    table tr td select {
     font-size: xx-large;
     }
 
@@ -91,7 +77,8 @@
 
     padding: 0.5em;
     border: 0.5em solid #fff;
-    margin: 0.5em;
+    margin-top: 1em;
+
     box-sizing: border-box;
 
     font-size: x-large;
@@ -106,43 +93,23 @@
 <body>
 
 <header>
-    <h1>Fiend city by name</h1>
+    <h1>Delete all info about city</h1>
 </header>
 
-<table class="mainTable">
+<table>
+    <form action="/DeleteAllInfoAboutCity" th:object="${request}" method="post">
 
-    <form action="/FiendCityByName" th:object="${request}" method="post">
-
-        <tr><td>City name</br><input placeholder="enter city name" autofocus
-                                   required
-                                   id="name"
-                                   name="name"
-                                   th:field="${request.cityName}"/>
-        </td></tr>
+        <tr><td>Id</br><input type="text" placeholder="enter city Id" required autofocus
+                              id="id"
+                              name="id"
+                              th:field="${request.cityId}"/></td></tr>
 
         <td class="button">
-            <input type="submit" value="Fiend city by Name"/>
+            <input type="submit" value="Delete all info"/>
+            <input type="button" onclick="history.back();" value="Back"/>
         </td>
 
     </form>
-    </tr>
-</table>
-
-<table class="searchTable">
-
-    <tr>
-        <td>City Id</td>
-        <td>City name</td>
-    </tr>
-
-    <tr th:if="${CITY != null}" th:each="city : ${CITY}">
-        <td th:text="${city.cityId}"/>
-        <td th:text="${city.cityName}"/>
-    </tr>
-
-    <td class="button">
-        <input type="button" onclick="history.back();" value="Back"/>
-    </td>
 
 </table>
 
