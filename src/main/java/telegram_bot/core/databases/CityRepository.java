@@ -9,14 +9,14 @@ public interface CityRepository {
 
     void addCity(City city);
 
-    boolean deleteCityById(Long city_id);
+    boolean deleteCityById(Long cityId);
 
-    boolean deleteCityByName(String city_name);
+    boolean deleteCityByName(String cityName);
 
     List<City> getAllCity();
 
-    Optional<City> fiendCityByName(String city_name);
+    Optional<City> fiendCityByName(String cityName);
 
-    Optional<City> fiendCityById(Long city_id);
+    Optional<City> fiendCityById(Long cityId);
 
 }

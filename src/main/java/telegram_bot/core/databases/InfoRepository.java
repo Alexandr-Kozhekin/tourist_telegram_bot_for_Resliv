@@ -9,12 +9,10 @@ public interface InfoRepository {
 
     void addInfoAboutCity(City city, String info);
 
-    List<City> getAllInfoAboutCity(String city_name);
+    List<Info> getAllInfoAboutCity(Long cityId);
 
-    boolean deleteInfoAboutCity(String city_name, Long id);
+    boolean deleteAllInfoAboutCity(Long cityId);
 
-    void updateInfoAboutCity(String city_name, Long id);
-
-//    boolean deleteInfoByName(String name);
+    boolean deleteInfoAboutCity(Long infoId, Long cityId);
 
 }

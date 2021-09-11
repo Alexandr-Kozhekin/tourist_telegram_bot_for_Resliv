@@ -26,7 +26,7 @@ public class CityRepositoryImpl implements CityRepository {
     public boolean deleteCityById(Long id) {
 
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "delete City where id = :id");
+                "DELETE City WHERE id = :id");
         query.setParameter("id", id);
 
         int result = query.executeUpdate();
@@ -38,7 +38,7 @@ public class CityRepositoryImpl implements CityRepository {
     public boolean deleteCityByName(String name) {
 
         Query query = sessionFactory.getCurrentSession().createQuery(
-                "delete City where city_name = :city_name");
+                "DELETE City WHERE city_name = :city_name");
         query.setParameter("city_name", name);
 
         int result = query.executeUpdate();
@@ -55,23 +55,23 @@ public class CityRepositoryImpl implements CityRepository {
     }
 
     @Override
-    public Optional<City> fiendCityByName(String city_name) {
+    public Optional<City> fiendCityByName(String cityName) {
 
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("SELECT c FROM City c WHERE city_name = :city_name", City.class);
 
-        query.setParameter("city_name", city_name);
+        query.setParameter("city_name", cityName);
 
         return query.getResultList().stream().findFirst();
     }
 
     @Override
-    public Optional<City> fiendCityById(Long city_id) {
+    public Optional<City> fiendCityById(Long cityId) {
 
         Query query = sessionFactory.getCurrentSession()
                 .createQuery("SELECT c FROM City c WHERE city_id = :city_id", City.class);
 
-        query.setParameter("city_id", city_id);
+        query.setParameter("city_id", cityId);
 
         return query.getResultList().stream().findFirst();
     }
