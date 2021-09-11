@@ -15,7 +15,7 @@ public class DeleteCityByIdController {
     @Autowired private DeleteCityByIdService cityService;
 
     @GetMapping(value = "/DeleteCityById")
-    public String showDeleteCityByIDPage(ModelMap modelMap){
+    public String showDeleteCityByIDPage(ModelMap modelMap) {
 
         modelMap.addAttribute("request", new DeleteCityByIdRequest());
 
@@ -29,5 +29,4 @@ public class DeleteCityByIdController {
 
         return "DeleteCityById";
     }
-
 }

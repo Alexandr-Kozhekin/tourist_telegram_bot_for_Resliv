@@ -13,8 +13,7 @@ import telegram_bot.core.services.FiendCityByNameService;
 @Controller
 public class FiendCityByNameController {
 
-    @Autowired
-    FiendCityByNameService fiendCityByNameService;
+    @Autowired FiendCityByNameService fiendCityByNameService;
 
     @GetMapping(value = "/FiendCityByName")
     public String showFiendCityByNamePage(ModelMap modelMap) {
