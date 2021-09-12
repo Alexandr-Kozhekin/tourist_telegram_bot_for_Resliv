@@ -2,20 +2,20 @@ package telegram_bot.core.requests;
 
 public class GetAllInfoAboutCityRequest {
 
-    private Long cityId;
+    private String cityName;
 
     public GetAllInfoAboutCityRequest() {
     }
 
-    public GetAllInfoAboutCityRequest(Long cityId) {
-        this.cityId = cityId;
+    public GetAllInfoAboutCityRequest(String cityName) {
+        this.cityName = cityName;
     }
 
-    public Long getCityId() {
-        return cityId;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 }

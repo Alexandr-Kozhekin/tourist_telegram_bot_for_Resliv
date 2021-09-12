@@ -113,11 +113,11 @@
 
     <form action="/GetAllInfoAboutCity" th:object="${request}" method="post">
 
-        <tr><td>City Id</br><input placeholder="enter city Id" autofocus
+        <tr><td>City name</br><input placeholder="enter city name" autofocus
                                    required
                                    id="id"
                                    name="id"
-                                   th:field="${request.cityId}"/>
+                                   th:field="${request.cityName}"/>
         </td></tr>
 
         <td class="button">
