@@ -7,7 +7,6 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.*;
 import telegram_bot.bot.service.MessageService;
 import telegram_bot.core.domain.*;
-import telegram_bot.core.requests.FiendCityByNameRequest;
 import telegram_bot.core.requests.GetAllInfoAboutCityRequest;
 import telegram_bot.core.responses.*;
 import telegram_bot.core.services.*;
