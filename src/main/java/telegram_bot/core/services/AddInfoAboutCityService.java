@@ -3,31 +3,33 @@ package telegram_bot.core.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import telegram_bot.core.databases.CityRepository;
-import telegram_bot.core.databases.InfoRepository;
-import telegram_bot.core.domain.City;
-import telegram_bot.core.domain.Info;
-import telegram_bot.core.requests.AddInfoAboutCityRequest;
-import telegram_bot.core.responses.AddInfoAboutCityResponse;
 
-import java.util.Optional;
+import telegram_bot.core.databases.InfoRepository;
+import telegram_bot.core.requests.AddInfoAboutCityRequest;
+import telegram_bot.core.services.validators.AddInfoAboutCityValidator;
+
+import telegram_bot.core.responses.*;
+
+import java.util.List;
 
 @Component
 @Transactional
 public class AddInfoAboutCityService {
 
-    @Autowired CityRepository cityRepository;
-
     @Autowired InfoRepository infoRepository;
+
+    @Autowired AddInfoAboutCityValidator validator;
 
     public AddInfoAboutCityResponse execute(AddInfoAboutCityRequest request) {
 
-        Optional<City> city = cityRepository.fiendCityByName(request.getCityName());
+        List<CoreError> errors = validator.validate(request);
 
-        city.ifPresent(value -> infoRepository.addInfoAboutCity(value, request.getCityInfo()));
+        if (!errors.isEmpty()) {
+            return new AddInfoAboutCityResponse(errors);
+        }
 
-        Info info = new Info(request.getCityInfo());
+        infoRepository.addInfoAboutCity(request.getCityId(), request.getInfo());
 
-        return new AddInfoAboutCityResponse(info);
+        return new AddInfoAboutCityResponse(request.getInfo());
     }
 }
