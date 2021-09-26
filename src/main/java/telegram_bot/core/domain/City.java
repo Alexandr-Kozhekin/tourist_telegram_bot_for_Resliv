@@ -3,9 +3,10 @@ package telegram_bot.core.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
-@Table(name = "CITY")
+@Table(name = "CITIES")
 public class City implements Serializable {
 
     @Id
@@ -15,6 +16,10 @@ public class City implements Serializable {
 
     @Column(name = "city_name", nullable = false)
     private String cityName;
+
+    @OneToMany
+    private Set<Info> cityInfo;
+
 
     public City() {
     }
@@ -39,17 +44,25 @@ public class City implements Serializable {
         this.cityName = cityName;
     }
 
+    public Set<Info> getCityInfo() {
+        return cityInfo;
+    }
+
+    public void setCityInfo(Set<Info> cityInfo) {
+        this.cityInfo = cityInfo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         City city = (City) o;
-        return Objects.equals(cityId, city.cityId) && Objects.equals(cityName, city.cityName);
+        return Objects.equals(cityId, city.cityId) && Objects.equals(cityName, city.cityName) && Objects.equals(cityInfo, city.cityInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cityId, cityName);
+        return Objects.hash(cityId, cityName, cityInfo);
     }
 
     @Override
@@ -57,6 +70,7 @@ public class City implements Serializable {
         return "City{" +
                 "cityId=" + cityId +
                 ", cityName='" + cityName + '\'' +
+                ", cityInfo=" + cityInfo +
                 '}';
     }
 }
