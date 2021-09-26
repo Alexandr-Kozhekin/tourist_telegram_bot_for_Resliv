@@ -1,8 +1,14 @@
 package telegram_bot.core.responses;
 
-public class DeleteCityByNameResponse {
+import java.util.List;
+
+public class DeleteCityByNameResponse extends CoreResponse {
 
     private boolean delete;
+
+    public DeleteCityByNameResponse(List<CoreError> errors) {
+        super(errors);
+    }
 
     public DeleteCityByNameResponse(boolean delete) {
         this.delete = delete;
@@ -11,5 +17,4 @@ public class DeleteCityByNameResponse {
     public boolean getDelete() {
         return delete;
     }
-
 }

@@ -2,9 +2,15 @@ package telegram_bot.core.responses;
 
 import telegram_bot.core.domain.City;
 
-public class FiendCityByIdResponse {
+import java.util.List;
+
+public class FiendCityByIdResponse extends CoreResponse {
 
     private City city;
+
+    public FiendCityByIdResponse (List<CoreError> errors) {
+        super(errors);
+    }
 
     public FiendCityByIdResponse(City city) {
         this.city = city;

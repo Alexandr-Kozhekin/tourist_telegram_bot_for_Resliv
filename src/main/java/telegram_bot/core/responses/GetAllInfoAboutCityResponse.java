@@ -4,7 +4,7 @@ import telegram_bot.core.domain.Info;
 
 import java.util.List;
 
-public class GetAllInfoAboutCityResponse {
+public class GetAllInfoAboutCityResponse extends CoreResponse {
 
     private List<Info> infoList;
 
