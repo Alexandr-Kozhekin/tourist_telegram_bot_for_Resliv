@@ -8,9 +8,9 @@
       database.user.name= ____________
       database.user.password= ____________
       
-Токин и имя бота находятся там же:
+3. Введите имя бота и токин:
 
-      bot.username=Tourist_Res_bot
-      bot.token=1965326739:AAE0CqHiJliqLwMsc4okSLIzeVGUAfm8B_4
+      bot.username=
+      bot.token=
       
-3. для управлением и изминенмем данных воспользуйтесь localhost:
+4. для управлением и изминенмем данных воспользуйтесь localhost:
