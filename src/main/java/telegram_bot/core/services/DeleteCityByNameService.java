@@ -37,9 +37,7 @@ public class DeleteCityByNameService {
 
             infoRepository.deleteAllInfoAboutCity(city.get().getCityId());
 
-            boolean deleted = cityRepository.deleteCityByName(request.getCityName());
-
-            return new DeleteCityByNameResponse(deleted);
+            return new DeleteCityByNameResponse(cityRepository.deleteCityByName(request.getCityName()));
 
         } else {
 

@@ -28,8 +28,6 @@ public class DeleteAllInfoAboutCityService {
             return new DeleteAllInfoAboutCityResponse(errors);
         }
 
-        boolean deleted = infoRepository.deleteAllInfoAboutCity(request.getCityId());
-
-        return new DeleteAllInfoAboutCityResponse(deleted);
+        return new DeleteAllInfoAboutCityResponse(infoRepository.deleteAllInfoAboutCity(request.getCityId()));
     }
 }

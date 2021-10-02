@@ -22,5 +22,4 @@ public class GetAllCityService {
 
         return new GetAllCityResponse(city);
     }
-
 }

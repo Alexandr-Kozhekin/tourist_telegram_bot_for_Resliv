@@ -33,8 +33,6 @@ public class DeleteCityByIdService {
 
         infoRepository.deleteAllInfoAboutCity(request.getId());
 
-        boolean deleted = cityRepository.deleteCityById(request.getId());
-
-        return new DeleteCityByIdResponse(deleted);
+        return new DeleteCityByIdResponse(cityRepository.deleteCityById(request.getId()));
     }
 }

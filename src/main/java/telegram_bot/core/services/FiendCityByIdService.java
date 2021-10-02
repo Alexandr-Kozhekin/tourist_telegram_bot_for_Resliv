@@ -31,6 +31,6 @@ public class FiendCityByIdService {
 
         Optional<City> city = cityRepository.fiendCityById(request.getCityId());
 
-        return new FiendCityByIdResponse(city.get());
+        return city.map(FiendCityByIdResponse::new).orElseGet(() -> new FiendCityByIdResponse(city.orElseThrow()));
     }
 }

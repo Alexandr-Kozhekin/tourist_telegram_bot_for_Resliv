@@ -16,9 +16,9 @@ import java.util.List;
 @Transactional
 public class AddInfoAboutCityService {
 
-    @Autowired InfoRepository infoRepository;
+    @Autowired private InfoRepository infoRepository;
 
-    @Autowired AddInfoAboutCityValidator validator;
+    @Autowired private AddInfoAboutCityValidator validator;
 
     public AddInfoAboutCityResponse execute(AddInfoAboutCityRequest request) {
 

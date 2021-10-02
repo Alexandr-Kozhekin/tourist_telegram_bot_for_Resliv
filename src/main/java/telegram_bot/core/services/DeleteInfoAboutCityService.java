@@ -17,11 +17,11 @@ import java.util.*;
 @Transactional
 public class DeleteInfoAboutCityService {
 
-    @Autowired CityRepository cityRepository;
+    @Autowired private CityRepository cityRepository;
 
-    @Autowired InfoRepository infoRepository;
+    @Autowired private InfoRepository infoRepository;
 
-    @Autowired DeleteInfoAboutCityValidator validator;
+    @Autowired private DeleteInfoAboutCityValidator validator;
 
     public DeleteInfoAboutCityResponse execute(DeleteInfoAboutCityRequest request) {
 
