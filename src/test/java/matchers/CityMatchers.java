@@ -5,7 +5,7 @@ import telegram_bot.core.domain.City;
 
 public class CityMatchers implements ArgumentMatcher<City> {
 
-    private String cityName;
+    private final String cityName;
 
     public CityMatchers(String cityName) {
         this.cityName = cityName;

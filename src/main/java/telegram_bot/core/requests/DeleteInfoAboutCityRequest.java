@@ -6,8 +6,6 @@ public class DeleteInfoAboutCityRequest {
 
     private Long infoId;
 
-    private Long cityId;
-
     public DeleteInfoAboutCityRequest() {
     }
 
@@ -15,9 +13,9 @@ public class DeleteInfoAboutCityRequest {
         this.cityName = cityName;
     }
 
-    public DeleteInfoAboutCityRequest(Long infoId, Long cityId) {
+    public DeleteInfoAboutCityRequest(String cityName, Long infoId) {
+        this.cityName = cityName;
         this.infoId = infoId;
-        this.cityId = cityId;
     }
 
     public String getCityName() {
@@ -34,13 +32,5 @@ public class DeleteInfoAboutCityRequest {
 
     public void setInfoId(Long infoId) {
         this.infoId = infoId;
-    }
-
-    public Long getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
     }
 }

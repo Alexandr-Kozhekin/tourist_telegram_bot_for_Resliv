@@ -8,6 +8,10 @@ public class GetAllInfoAboutCityResponse extends CoreResponse {
 
     private List<Info> infoList;
 
+    public GetAllInfoAboutCityResponse(CoreError errors) {
+        super(errors);
+    }
+
     public GetAllInfoAboutCityResponse(List<Info> infoList) {
         this.infoList = infoList;
     }
