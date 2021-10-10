@@ -1,9 +1,10 @@
 package telegram_bot.core.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Set;
+
+import javax.persistence.*;
+
+import java.util.*;
 
 @Entity
 @Table(name = "CITIES")
@@ -17,9 +18,19 @@ public class City implements Serializable {
     @Column(name = "city_name", nullable = false)
     private String cityName;
 
-    @OneToMany
+    @JoinTable(
+            name = "CITIES_INFOS",
+            joinColumns = @JoinColumn(
+                    name = "city_id",
+                    referencedColumnName = "city_id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "info_id",
+                    referencedColumnName = "info_id"
+            )
+    )
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Info> cityInfo;
-
 
     public City() {
     }
