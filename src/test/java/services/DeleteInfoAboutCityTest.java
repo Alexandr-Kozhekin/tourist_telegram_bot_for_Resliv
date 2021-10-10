@@ -21,8 +21,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class DeleteInfoAboutCityTest {
 
-    @Mock private CityRepository cityRepository;
-
     @Mock private InfoRepository infoRepository;
 
     @Mock private DeleteInfoAboutCityValidator validator;
@@ -32,7 +30,7 @@ public class DeleteInfoAboutCityTest {
     @Test
     public void shouldInteractWithDBInCaseOfAllValidEntries() {
 
-        City city = new City("Test");;
+        City city = new City("Test");
 
         Set<Info> infoSet = new HashSet<>();
         infoSet.add(new Info("Test"));
@@ -41,7 +39,7 @@ public class DeleteInfoAboutCityTest {
 
         city.setCityInfo(infoSet);
 
-        DeleteInfoAboutCityRequest request = new DeleteInfoAboutCityRequest("Test", 0L);
+        DeleteInfoAboutCityRequest request = new DeleteInfoAboutCityRequest(0L, 0L);
 
         Mockito.lenient().when(validator.validate(request)).thenReturn(List.of());
 
@@ -60,7 +58,7 @@ public class DeleteInfoAboutCityTest {
         DeleteInfoAboutCityRequest request = new DeleteInfoAboutCityRequest(null, 1L);
 
         List<CoreError> expected = List.of(
-                new CoreError("city name", "Must not be empty!"));
+                new CoreError("city id", "Must not be empty!"));
 
         Mockito.when(validator.validate(request)).thenReturn(expected);
 
@@ -69,8 +67,6 @@ public class DeleteInfoAboutCityTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 1).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-
-        Mockito.verifyNoInteractions(cityRepository);
     }
 
     @Test
@@ -79,7 +75,7 @@ public class DeleteInfoAboutCityTest {
         DeleteInfoAboutCityRequest request = new DeleteInfoAboutCityRequest(null, null);
 
         List<CoreError> expected = List.of(
-                new CoreError("city name", "Must not be empty!"),
+                new CoreError("city id", "Must not be empty!"),
                 new CoreError("info id", "Must not be empty!"));
 
         Mockito.when(validator.validate(request)).thenReturn(expected);
@@ -89,7 +85,5 @@ public class DeleteInfoAboutCityTest {
         assertThat(response.hasErrors()).isTrue();
         assertThat(response.getErrors().size() == 2).isTrue();
         assertThat(response.getErrors()).isEqualTo(expected);
-
-        Mockito.verifyNoInteractions(cityRepository);
     }
 }

@@ -7,7 +7,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.*;
 
 import telegram_bot.core.databases.InfoRepository;
-import telegram_bot.core.domain.Info;
 import telegram_bot.core.requests.AddInfoAboutCityRequest;
 import telegram_bot.core.services.AddInfoAboutCityService;
 import telegram_bot.core.services.validators.AddInfoAboutCityValidator;
@@ -30,20 +29,20 @@ public class AddInfoAboutCityServiceTest {
     @Test
     public void shouldInteractWithDBInCaseOfAllValidEntries() {
 
-        AddInfoAboutCityRequest request = new AddInfoAboutCityRequest(1L, new Info("test test test"));
+        AddInfoAboutCityRequest request = new AddInfoAboutCityRequest(1L,"test test test");
 
         AddInfoAboutCityResponse response = service.execute(request);
 
         Mockito.verify(repository).addInfoAboutCity(request.getCityId(), request.getInfo());
 
         assertThat(response.hasErrors()).isFalse();
-        assertThat(response.getInfo()).isEqualTo(new Info("test test test"));
+        assertThat(response.getInfo()).isEqualTo("test test test");
     }
 
     @Test
     public void shouldReturnErrorWhenCityIdNull() {
 
-        AddInfoAboutCityRequest request = new AddInfoAboutCityRequest(null, new Info("test test test"));
+        AddInfoAboutCityRequest request = new AddInfoAboutCityRequest(null,"test test test");
 
         List<CoreError> expected = List.of(
                 new CoreError("city id", "Must not be empty!"));
