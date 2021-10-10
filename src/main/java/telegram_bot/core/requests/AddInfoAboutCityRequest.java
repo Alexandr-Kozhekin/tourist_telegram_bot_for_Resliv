@@ -1,17 +1,15 @@
 package telegram_bot.core.requests;
 
-
-import telegram_bot.core.domain.Info;
-
 public class AddInfoAboutCityRequest {
 
     private Long cityId;
-    private Info info;
+
+    private String info;
 
     public AddInfoAboutCityRequest() {
     }
 
-    public AddInfoAboutCityRequest(Long cityId, Info info) {
+    public AddInfoAboutCityRequest(Long cityId, String info) {
         this.cityId = cityId;
         this.info = info;
     }
@@ -24,11 +22,11 @@ public class AddInfoAboutCityRequest {
         this.cityId = cityId;
     }
 
-    public Info getInfo() {
+    public String getInfo() {
         return info;
     }
 
-    public void setInfo(Info info) {
+    public void setInfo(String info) {
         this.info = info;
     }
 }

@@ -2,28 +2,24 @@ package telegram_bot.core.requests;
 
 public class DeleteInfoAboutCityRequest {
 
-    private String cityName;
+    private Long cityId;
 
     private Long infoId;
 
     public DeleteInfoAboutCityRequest() {
     }
 
-    public DeleteInfoAboutCityRequest(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public DeleteInfoAboutCityRequest(String cityName, Long infoId) {
-        this.cityName = cityName;
+    public DeleteInfoAboutCityRequest(Long cityId, Long infoId) {
+        this.cityId = cityId;
         this.infoId = infoId;
     }
 
-    public String getCityName() {
-        return cityName;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
     public Long getInfoId() {
