@@ -1,14 +1,14 @@
 package telegram_bot.core.databases;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import telegram_bot.core.domain.City;
-import telegram_bot.core.domain.Info;
 
-import java.util.List;
+import telegram_bot.core.domain.*;
+
+import org.hibernate.*;
+
+import java.util.*;
 
 @Component
 @Transactional
@@ -17,52 +17,80 @@ public class InfoRepositoryImpl implements InfoRepository {
     @Autowired SessionFactory sessionFactory;
 
     @Override
-    public void addInfoAboutCity(Long cityId, Info info) {
+    public void addInfoAboutCity(Long cityId, String info) {
 
-        sessionFactory.getCurrentSession().save(info);
+        sessionFactory.getCurrentSession().save(new Info(info));
 
-        City existingCity = (City) sessionFactory.getCurrentSession().get(City.class, cityId);
+        City existingCity = sessionFactory.getCurrentSession().get(City.class, cityId);
 
-        existingCity.getCityInfo().add(info);
+        existingCity.getCityInfo().add(new Info(info));
 
         sessionFactory.getCurrentSession().save(existingCity);
     }
 
     @Override
-    public List<Info> getAllInfoAboutCity(String cityName) {
+    public Set<Info> getAllInfoAboutCity(String cityName) {
 
-        org.hibernate.Query query = sessionFactory.getCurrentSession()
-                .createQuery("SELECT city_info FROM CityInfo \n" +
-                        "INNER JOIN CITIES ON CITIES.city_id = CityInfo.city_id\n" +
-                        "INNER JOIN INFOS ON INFOS.info_id = CityInfo.info_id WHERE city_name = :cityName;", Info.class);
-        query.setParameter("cityName", cityName);
+        City city = getExistingCity(cityName);
 
-        return query.getResultList();
+        return city.getCityInfo();
     }
 
     @Override
     public boolean deleteInfoAboutCity(Long cityId, Long infoId) {
 
-        Query query = sessionFactory.getCurrentSession()
-                .createQuery("DELETE info_id WHERE city_id = :city_id AND info_id = :info_id");
-        query.setParameter("city_id", cityId);
-        query.setParameter("info_id", infoId);
+        City existingCity = sessionFactory.getCurrentSession().get(City.class, cityId);
 
-        int result = query.executeUpdate();
+        Set<Info> existingInfo = existingCity.getCityInfo();
 
-        return result == 1;
+        if (!existingInfo.isEmpty()) {
+
+            Optional<Info> infoExist = existingInfo.stream()
+                    .filter(info -> info.getInfoId().equals(infoId))
+                    .findFirst();
+
+            infoExist.ifPresent(existingInfo::remove);
+
+            sessionFactory.getCurrentSession().save(existingCity);
+
+            return true;
+
+        } else {
+
+            return false;
+        }
     }
 
     @Override
     public boolean deleteAllInfoAboutCity(Long cityId) {
 
-        org.hibernate.Query query = sessionFactory.getCurrentSession()
-                .createQuery("DELETE info_id WHERE city_id = :cityId");
-        query.setParameter("cityId", cityId);
+        City existingCity = sessionFactory.getCurrentSession().get(City.class, cityId);
 
-        int result = query.executeUpdate();
+        Set<Info> info = existingCity.getCityInfo();
 
-        return result == 1;
+        if (!info.isEmpty()) {
+
+            info.clear();
+
+            sessionFactory.getCurrentSession().save(existingCity);
+
+            return true;
+
+        } else {
+
+            return false;
+        }
     }
 
+    private City getExistingCity(String cityName) {
+
+        Query query = sessionFactory.getCurrentSession()
+                .createQuery("SELECT c FROM City c WHERE city_name = :cityName", City.class);
+
+        query.setParameter("cityName", cityName);
+
+        List<City> city = query.getResultList();
+
+        return city.get(0);
+    }
 }

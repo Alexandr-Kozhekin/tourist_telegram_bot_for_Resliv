@@ -2,13 +2,13 @@ package telegram_bot.core.databases;
 
 import telegram_bot.core.domain.Info;
 
-import java.util.List;
+import java.util.Set;
 
 public interface InfoRepository {
 
-    void addInfoAboutCity(Long cityId, Info info);
+    void addInfoAboutCity(Long cityId, String info);
 
-    List<Info> getAllInfoAboutCity(String cityName);
+    Set<Info> getAllInfoAboutCity(String cityName);
 
     boolean deleteInfoAboutCity(Long cityId, Long infoId);
 

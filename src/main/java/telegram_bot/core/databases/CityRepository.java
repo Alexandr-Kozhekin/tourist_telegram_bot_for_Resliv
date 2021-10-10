@@ -2,8 +2,7 @@ package telegram_bot.core.databases;
 
 import telegram_bot.core.domain.City;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public interface CityRepository {
 

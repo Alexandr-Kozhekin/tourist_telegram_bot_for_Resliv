@@ -1,14 +1,14 @@
 package telegram_bot.core.databases;
 
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import telegram_bot.core.domain.City;
 
-import java.util.List;
-import java.util.Optional;
+import org.hibernate.*;
+
+import java.util.*;
+
+import telegram_bot.core.domain.City;
 
 @Component
 @Transactional
@@ -58,7 +58,7 @@ public class CityRepositoryImpl implements CityRepository {
     public Optional<City> fiendCityByName(String cityName) {
 
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("SELECT c FROM City c WHERE city_name = :city_name", City.class);
+                .createQuery("SELECT c FROM City c WHERE city_name = :city_name");
 
         query.setParameter("city_name", cityName);
 
@@ -69,11 +69,10 @@ public class CityRepositoryImpl implements CityRepository {
     public Optional<City> fiendCityById(Long cityId) {
 
         Query query = sessionFactory.getCurrentSession()
-                .createQuery("SELECT c FROM City c WHERE city_id = :city_id", City.class);
+                .createQuery("SELECT c FROM City c WHERE city_id = :city_id");
 
         query.setParameter("city_id", cityId);
 
         return query.getResultList().stream().findFirst();
     }
-
 }
