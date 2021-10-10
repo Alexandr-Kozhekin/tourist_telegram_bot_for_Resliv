@@ -1,12 +1,15 @@
 package telegram_bot.core.services.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.requests.FiendCityByNameRequest;
 import telegram_bot.core.responses.CoreError;
 
 import java.util.*;
 
+@Component
 public class FiendCityByNameValidator {
 
     @Autowired private CityRepository repository;
@@ -26,7 +29,9 @@ public class FiendCityByNameValidator {
 
     private Optional<CoreError> validateCityInDatabases(FiendCityByNameRequest request) {
         if (repository.getAllCity().stream()
-                .filter(city -> city.getCityName().equals(request.getCityName())).findFirst().isEmpty()) {
+                .filter(city -> city.getCityName().equals(request.getCityName()))
+                .findFirst()
+                .isEmpty()) {
 
             return Optional.of(new CoreError("city", "Not found!"));
         } else {

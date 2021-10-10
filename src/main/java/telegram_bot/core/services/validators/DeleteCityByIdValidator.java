@@ -1,12 +1,15 @@
 package telegram_bot.core.services.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.requests.DeleteCityByIdRequest;
 import telegram_bot.core.responses.CoreError;
 
 import java.util.*;
 
+@Component
 public class DeleteCityByIdValidator {
 
     @Autowired private CityRepository repository;
@@ -19,7 +22,7 @@ public class DeleteCityByIdValidator {
     }
 
     private Optional<CoreError> validateInputCityId(DeleteCityByIdRequest request) {
-        return (request.getId() == null)
+        return (request.getId() == null || request.getId() <= 0L)
                 ? Optional.of(new CoreError("city id", "Must not be empty!"))
                 : Optional.empty();
     }

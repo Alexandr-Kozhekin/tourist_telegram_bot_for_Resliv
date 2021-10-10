@@ -1,12 +1,15 @@
 package telegram_bot.core.services.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.requests.DeleteCityByNameRequest;
 import telegram_bot.core.responses.CoreError;
 
 import java.util.*;
 
+@Component
 public class DeleteCityByNameValidator {
 
     @Autowired private CityRepository repository;

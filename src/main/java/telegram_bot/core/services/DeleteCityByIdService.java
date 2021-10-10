@@ -19,8 +19,6 @@ public class DeleteCityByIdService {
 
     @Autowired private CityRepository cityRepository;
 
-    @Autowired private InfoRepository infoRepository;
-
     @Autowired private DeleteCityByIdValidator validator;
 
     public DeleteCityByIdResponse execute(DeleteCityByIdRequest request){
@@ -30,8 +28,6 @@ public class DeleteCityByIdService {
         if (!errors.isEmpty()) {
             return new DeleteCityByIdResponse(errors);
         }
-
-        infoRepository.deleteAllInfoAboutCity(request.getId());
 
         return new DeleteCityByIdResponse(cityRepository.deleteCityById(request.getId()));
     }

@@ -1,12 +1,15 @@
 package telegram_bot.core.services.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import telegram_bot.core.databases.CityRepository;
 import telegram_bot.core.requests.AddInfoAboutCityRequest;
 import telegram_bot.core.responses.CoreError;
 
 import java.util.*;
 
+@Component
 public class AddInfoAboutCityValidator {
 
     @Autowired private CityRepository repository;
@@ -26,7 +29,7 @@ public class AddInfoAboutCityValidator {
     }
 
     private Optional<CoreError> validateInputCityId(AddInfoAboutCityRequest request) {
-        return (request.getCityId() == null)
+        return (request.getCityId() == null || request.getCityId() <= 0L)
                 ? Optional.of(new CoreError("city id", "Must not be empty!"))
                 : Optional.empty();
     }

@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import telegram_bot.core.databases.InfoRepository;
+import telegram_bot.core.databases.*;
+
 import telegram_bot.core.requests.GetAllInfoAboutCityRequest;
 import telegram_bot.core.services.validators.GetAllInfoAboutCityValidator;
 
@@ -19,12 +20,6 @@ public class GetAllInfoAboutCityService {
     @Autowired private GetAllInfoAboutCityValidator validator;
 
     public GetAllInfoAboutCityResponse execute(GetAllInfoAboutCityRequest request) {
-
-        CoreError errors = validator.validate(request);
-
-        if (errors != null) {
-            return new GetAllInfoAboutCityResponse(errors);
-        }
 
         return new GetAllInfoAboutCityResponse(infoRepository.getAllInfoAboutCity(request.getCityName()));
     }
