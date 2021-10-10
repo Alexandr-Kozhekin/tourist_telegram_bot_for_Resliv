@@ -3,16 +3,19 @@ package telegram_bot.bot.domain;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+
 import org.telegram.telegrambots.meta.api.objects.*;
+
 import telegram_bot.bot.service.MessageService;
-import telegram_bot.core.domain.*;
 import telegram_bot.core.requests.GetAllInfoAboutCityRequest;
+
+import telegram_bot.core.domain.*;
 import telegram_bot.core.responses.*;
 import telegram_bot.core.services.*;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @PropertySource("application.properties")
 @Component
@@ -99,7 +102,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         GetAllInfoAboutCityResponse response = getAllInfoAboutCityService
                 .execute(new GetAllInfoAboutCityRequest(cityName));
 
-        List<Info> infos = response.getInfoList();
+        Set<Info> infos = response.getInfoSet();
 
         if (!infos.isEmpty()) {
             for (Info info : infos) {
