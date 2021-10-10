@@ -73,12 +73,6 @@
             <version>4.1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>tourist_telegram_bot_for_Resliv</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
     <build>
