@@ -2,21 +2,21 @@ package telegram_bot.core.responses;
 
 import telegram_bot.core.domain.Info;
 
-import java.util.List;
+import java.util.Set;
 
 public class GetAllInfoAboutCityResponse extends CoreResponse {
 
-    private List<Info> infoList;
+    private Set<Info> infoSet;
 
     public GetAllInfoAboutCityResponse(CoreError errors) {
         super(errors);
     }
 
-    public GetAllInfoAboutCityResponse(List<Info> infoList) {
-        this.infoList = infoList;
+    public GetAllInfoAboutCityResponse(Set<Info> infoSet) {
+        this.infoSet = infoSet;
     }
 
-    public List<Info> getInfoList() {
-        return infoList;
+    public Set<Info> getInfoSet() {
+        return infoSet;
     }
 }

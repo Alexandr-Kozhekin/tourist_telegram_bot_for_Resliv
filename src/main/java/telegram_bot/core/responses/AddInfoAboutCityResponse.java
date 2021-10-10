@@ -1,22 +1,20 @@
 package telegram_bot.core.responses;
 
-import telegram_bot.core.domain.Info;
-
 import java.util.List;
 
 public class AddInfoAboutCityResponse extends CoreResponse {
 
-    private Info info;
+    private String info;
 
     public AddInfoAboutCityResponse(List<CoreError> errors) {
         super(errors);
     }
 
-    public AddInfoAboutCityResponse(Info info) {
+    public AddInfoAboutCityResponse(String info) {
         this.info = info;
     }
 
-    public Info getInfo() {
+    public String getInfo() {
         return info;
     }
 }
