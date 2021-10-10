@@ -98,15 +98,15 @@
 
     <form action="/AddInfoAboutCity" th:object="${request}" method="post">
 
-        <tr><td>City name</br><input type="text" placeholder="enter city name" autofocus
-                                     id="name"
-                                     name="name"
-                                     th:field="${request.cityName}"/></td></tr>
+        <tr><td>City id</br><input type="text" placeholder="enter city id" autofocus
+                                     id="id"
+                                     name="id"
+                                     th:field="${request.cityId}"/></td></tr>
 
         <tr><td>City info</br><input type="text" placeholder="enter info about city" autofocus
                                      id="info"
                                      name="info"
-                                     th:field="${request.cityInfo}"/></td></tr>
+                                     th:field="${request.info}"/></td></tr>
 
         <td class="button">
             <input type="submit" value="Add info"/>
@@ -115,6 +115,13 @@
     </form>
 
 </table>
+
+<td th:if="${errors != null}">
+    <tr th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td>
+    </tr>
+</td>
 
 </body>
 </html>
