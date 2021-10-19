@@ -2,7 +2,7 @@
 
 Для запуска вам потребуется: 
 
-*Если на вашем компьютере уже установленны  IntelliJ Idea, MySQL Community Server, MySQLWorkbench, Git 
+*Если на вашем компьютере уже установлена IntelliJ Idea, MySQL Community Server, MySQLWorkbench, Git 
 и проведены необходимые подключения вы можете пропустить пункты: 1 - 7 и 9
 
 1. Скачайте и установите последнюю версию JDK на свой компьютер:
