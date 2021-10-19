@@ -22,12 +22,12 @@ https://git-scm.com/
 7. Подключите к среде разработки IntelliJ Idea установленный на своём компьютер Git
  
 8. Скачайте на свой локальный компьютер проект из GitHub: 
-            1. откройте IntelliJ Idea
-            2. нажмите кнопку Get from VCS
-            3. в поле Version control: выбирете Git
-            4. выберите директорию в которую будет загружен проект
-            5. введите URL проекта 
-            6. нажмите кнопку Clone
+8.1 откройте IntelliJ Idea
+8.2 нажмите кнопку Get from VCS
+8.3 в поле Version control: выбирете Git
+8.4 выберите директорию в которую будет загружен проект
+8.5 введите URL проекта 
+8.6 нажмите кнопку Clone
 
 https://www.jetbrains.com/help/idea/manage-projects-hosted-on-github.html#clone-from-GitHub
 
@@ -38,15 +38,15 @@ URL проекта: https://github.com/Alexandr-Kozhekin/tourist_telegram_bot_fo
 10. В MySQLWorkbench войдите в подключенную базу данных и воспользоваться скриптом находящийся в database.V0.2.dbCreationScript (он создаст базу данных с необходимыми таблицами)
 
 11. В application.properties укажите имя (стандартное: root) и пароль (введенный при установке MySQL Community Server) 
-для подключения к базе данных (application.properties находится в пакете src.main.resources)
+для подключения к базе данных (application.properties находится в пакете src.main.resources):
 
-   database.user.name= ____________(root)
-   database.user.password= ____________(*********)
+database.user.name= ____________(root)
+database.user.password= ____________
       
 Введите имя бота и токин:
 
-   bot.username=____________
-   bot.token=____________
+bot.username=____________
+bot.token=____________
       
 12. В IntelliJ Idea запустите скачаный проект
 
